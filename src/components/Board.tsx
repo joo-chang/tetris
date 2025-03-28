@@ -6,6 +6,8 @@ import {
   TetrisBlock,
   calculateGhostPosition,
   createEmptyBoard,
+  BOARD_HEIGHT,
+  BOARD_WIDTH,
 } from "../utils/tetrominos";
 
 const Board = () => {
@@ -85,30 +87,66 @@ const Board = () => {
     return boardCopy;
   };
 
+  // 보드와 셀 크기 고정
+  const boardWidth = 300; // px
+  const boardHeight = 600; // px
+  const cellWidth = boardWidth / BOARD_WIDTH;
+  const cellHeight = boardHeight / BOARD_HEIGHT;
+
   return (
-    <div className="border-2 border-gray-700 bg-gray-900 relative">
-      <div className="grid grid-cols-10 gap-0">
+    <div
+      className="border-2 border-gray-700 bg-gray-900 relative"
+      style={{
+        width: `${boardWidth}px`,
+        height: `${boardHeight}px`,
+      }}
+    >
+      <div
+        className="grid h-full w-full"
+        style={{
+          gridTemplateColumns: `repeat(${BOARD_WIDTH}, 1fr)`,
+          gridTemplateRows: `repeat(${BOARD_HEIGHT}, 1fr)`,
+        }}
+      >
         {renderedBoard.map((row, y) =>
           row.map((cell, x) => (
             <div
               key={`${y}-${x}`}
-              className={`w-6 h-6 border border-gray-800 ${
+              className={`border border-gray-800 ${
                 cell.filled ? cell.color : "bg-gray-800/50"
               }`}
+              style={{
+                width: `${cellWidth}px`,
+                height: `${cellHeight - 1}px`,
+              }}
             />
           ))
         )}
       </div>
 
       {gameStatus === "paused" && (
-        <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
-          <div className="text-white text-2xl font-bold">일시정지</div>
+        <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
+          <div className="bg-gray-800/90 px-8 py-10 rounded-lg shadow-lg text-center">
+            <div className="text-white text-3xl md:text-4xl font-bold mb-4">
+              일시정지
+            </div>
+            <div className="text-gray-300 text-sm md:text-base">
+              계속하려면 일시정지 버튼을 클릭하세요
+            </div>
+          </div>
         </div>
       )}
 
       {gameStatus === "gameOver" && (
-        <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
-          <div className="text-white text-2xl font-bold">게임 오버</div>
+        <div className="absolute inset-0 bg-black/90 flex items-center justify-center">
+          <div className="bg-gray-800/90 px-8 py-10 rounded-lg shadow-lg text-center">
+            <div className="text-white text-3xl md:text-4xl font-bold mb-4">
+              게임 오버
+            </div>
+            <div className="text-gray-300 text-sm md:text-base">
+              다시 시작하려면 버튼을 클릭하세요
+            </div>
+          </div>
         </div>
       )}
     </div>

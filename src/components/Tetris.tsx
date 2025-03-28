@@ -16,13 +16,15 @@ const Tetris = () => {
   useGameLoop();
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-800 p-6 rounded-lg shadow-lg">
+    <div className="flex flex-col items-center justify-center bg-gray-800 p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold text-white mb-6">테트리스</h1>
 
-      <div className="flex flex-col md:flex-row gap-6">
-        <Board />
+      <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="order-2 md:order-1 flex-shrink-0">
+          <Board />
+        </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 order-1 md:order-2 w-64 flex-shrink-0">
           <NextBlock />
           <GameStats />
           <Controls />
