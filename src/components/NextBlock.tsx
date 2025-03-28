@@ -53,7 +53,7 @@ const NextBlock = () => {
 
       <div
         className="flex items-center justify-center"
-        style={{ height: "120px" }}
+        style={{ height: "100px" }}
       >
         <div
           className="relative bg-gray-800/50 rounded"

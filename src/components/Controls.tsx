@@ -22,7 +22,7 @@ const Controls = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col ">
       {(gameStatus === "idle" || gameStatus === "gameOver") && (
         <button
           className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg text-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"

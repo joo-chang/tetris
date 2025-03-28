@@ -89,7 +89,7 @@ const Board = () => {
 
   // 보드와 셀 크기 고정
   const boardWidth = 300; // px
-  const boardHeight = 600; // px
+  const boardHeight = 610; // px
   const cellWidth = boardWidth / BOARD_WIDTH;
   const cellHeight = boardHeight / BOARD_HEIGHT;
 
