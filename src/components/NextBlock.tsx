@@ -1,5 +1,5 @@
 import { useAppSelector } from "../hooks/reduxHooks";
-import { COLORS, TetrominoType, TETROMINOS } from "../utils/tetrominos";
+import { COLORS, TetrominoType } from "../utils/tetrominos";
 
 const NextBlock = () => {
   const { nextBlock } = useAppSelector((state) => state.tetris);
